@@ -17,7 +17,7 @@
 
     <div class="wrap upload">
         <div class="top">
-            <h1>Upload</h1>
+            <h1>Nuevo Socio</h1>
         </div>
 
         <form class="upload__form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST" enctype="multipart/form-data">
@@ -25,13 +25,13 @@
                 <label for="upload__torrent">Torrent File</label>
                 <div class="browse_contenedor">
                     <label class="btn__browse" id="btn__browse" for="upload__torrent">
-                        <span>Browse...</span>
+                        <span>Foto</span>
                     </label>
                     <input id="torrent__file" name="writen_torrent" type="text" readonly>
                 </div>
 
                 <div class="hide__admin">
-                    <input name="torrent_data" id="upload__torrent" accept=".torrent" type="file" placeholder="Browse...">
+                    <input name="torrent_data" id="upload__torrent" type="file" placeholder="Browse...">
                 </div>
 
                 <?php if(!empty($error)): ?>
@@ -41,19 +41,101 @@
             
             <div class="upload__form optional">
                 <div class="row">
-                    <label for="optional_display_name">Torrent display name (optional)</label>
-                    <input id="optional_display_name" name="optional_display_name" type="text" placeholder="Display Name">
+                    <label for="orden">Numero de Orden</label>
+                    <input id="orden" name="orden" type="text" placeholder="N° orden">
+
+                    <label for="name">Nombre</label>
+                    <input id="name" name="name" type="text" placeholder="Nombre">
+
+                    <label for="ingreso">Ingreso</label>
+                    <div>
+                        <select name="ingreso_month" id="">
+                            <option value="" selected>Mes</option>
+                            <?php for($i = 1; $i <= 12; $i++):?>
+                                <option value="<?php echo $i?>"><?php echo $i?></option>
+                            <?php endfor; ?>
+                        </select>
+                        <select name="ingreso_day" id="">
+                            <option value="" selected>Dia</option>
+                            <?php for($i = 1; $i <= 30; $i++):?>
+                                <option value="<?php echo $i?>"><?php echo $i?></option>
+                            <?php endfor; ?>
+                        </select> 
+                        <select name="ingreso_year" id="">
+                            <option value="" selected>Año</option>
+                            <?php for($i = 0; $i <= 70; $i++):?>
+                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                    
+                    <label for="Mail">Mail</label>
+                    <input id="Mail" name="mail" type="text" placeholder="Mail">
+
+                    <label for="dni">N° DNI</label>
+                    <input id="dni" name="dni" type="text" placeholder="DNI">
+
+                    <label for="nationality">Nacionalidad</label>
+                    <input id="nationality" name="nationality" type="text" placeholder="Nacionalidad">
                 </div>
 
                 <div class="row">
-                    <label for="torrent_magnet">Torrent Magnet (optional)</label>
-                    <input id="torrent_magnet" name="torrent_magnet" type="text" placeholder="Torrent Magnet">
-                </div>
-            </div>
+                    <label for="socio">Numero de Socio</label>
+                    <input id="socio" name="socio" type="text" placeholder="N° socio">
 
-            <div class="description__container">
-                <label for="description">Description</label>
-                <textarea name="description" id="description"></textarea>
+                    <label for="postal">Direccion Postal</label>
+                    <input id="postal" name="postal" type="text" placeholder="D Postal">
+
+                    <label for="baja">Baja</label>
+                    <div>
+                        <select name="baja_month" id="">
+                            <option value="" selected>Mes</option>
+                            <?php for($i = 1; $i <= 12; $i++):?>
+                                <option value="<?php echo $i?>"><?php echo $i?></option>
+                            <?php endfor; ?>
+                        </select>
+                        <select name="baja_day" id="">
+                            <option value="" selected>Dia</option>
+                            <?php for($i = 1; $i <= 30; $i++):?>
+                                <option value="<?php echo $i?>"><?php echo $i?></option>
+                            <?php endfor; ?>
+                        </select> 
+                        <select name="baja_year" id="">
+                            <option value="" selected>Año</option>
+                            <?php for($i = 0; $i <= 70; $i++):?>
+                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+
+                    <label for="cellphone">Telefono</label>
+                    <input id="cellphone" name="cellphone" type="text" placeholder="Cellphone">
+
+                    <label for="birth">Fecha de Nacimiento</label>
+                    <div>
+                        <select name="birth_month" id="">
+                            <option value="" selected>Mes</option>
+                            <?php for($i = 1; $i <= 12; $i++):?>
+                                <option value="<?php echo $i?>"><?php echo $i?></option>
+                            <?php endfor; ?>
+                        </select>
+                        <select name="birth_day" id="">
+                            <option value="" selected>Dia</option>
+                            <?php for($i = 1; $i <= 30; $i++):?>
+                                <option value="<?php echo $i?>"><?php echo $i?></option>
+                            <?php endfor; ?>
+                        </select> 
+                        <select name="birth_year" id="">
+                            <option value="" selected>Año</option>
+                            <?php for($i = 0; $i <= 70; $i++):?>
+                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+
+                    <label for="activity">Actividad</label>
+                    <input id="activity" name="activity" type="text" placeholder="Actividad">
+                </div>
             </div>
             
             <?php if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["g-recaptcha-response"])): ?>

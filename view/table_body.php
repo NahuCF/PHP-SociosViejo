@@ -1,39 +1,32 @@
 <?php $even_number = 0; ?>
-<?php foreach($torrents as $torrent): ?>
-    <?php if($even_number % 2 == 0): ?>
-        <tr class="row__table row__table-grey">
-            <td class="colaps"><a href="<?php echo "single.php" . "?ID=" . $torrent["ID"]; ?>"><?php echo $torrent["name"]; ?></a></td>
-            <td class="text-center">
-                <a href="<?php echo "dowload.php?f=" . $torrent["ID"]; ?>"><i class="fas fa-download"></i></a>
-                <?php if(!empty($torrent["magnet"])): ?>
-                    <a href="<?php echo $torrent["magnet"] ?>"><i class="fas fa-magnet"></i></a>
-                <?php else: ?>
-                    <a href="#" id="magnet__noclick" ?><i class="fas fa-magnet" id="magnet__red"></i></a>
-                <?php endif; ?>
-            </td>
-            <td class="text-center hide"><?php echo bytes_to_string($torrent["size"]); ?></td>
-            <td class="text-center hide"><?php echo date('Y-m-d H:i', strtotime($torrent["date"])); ?></td>
-            <td class="text-center"><?php echo $torrent["likes"]; ?></td>
-            <td class="text-center"><?php echo $torrent["dislikes"]; ?></td>
-        </tr>
-    <?php else: ?>
-        <tr class="row__table row__table-white">
-            <td class="colaps"><a href="<?php echo "single.php" . "?ID=" . $torrent["ID"]; ?>"><?php echo $torrent["name"]; ?></a></td>
-            <td class="text-center">
-                <a href="<?php echo "dowload.php?f=" . $torrent["ID"]; ?>"><i class="fas fa-download"></i></a>
-                <?php if(!empty($torrent["magnet"])): ?>
-                    <a href="<?php echo $torrent["magnet"] ?>"><i class="fas fa-magnet"></i></a>
-                <?php else: ?>
-                    <a href="#" id="magnet__noclick"><i class="fas fa-magnet" id="magnet__red"></i></a>
-                <?php endif; ?>
-            </td>
-            <td class="text-center hide"><?php echo bytes_to_string($torrent["size"]); ?></td>
-            <td class="text-center hide"><?php echo date('Y-m-d H:i', strtotime($torrent["date"])); ?></td>
-            <td class="text-center"><?php echo $torrent["likes"]; ?></td>
-            <td class="text-center"><?php echo $torrent["dislikes"]; ?></td>
-        </tr>
-    <?php endif; ?>
-
-    <?php $even_number++; ?>
-
+<?php foreach($socios as $socio): ?>
+    <tr>
+        <td class="img-member__container"><img class="img-member" src="data:image/ . '<?php echo $socio["photo_type"]; ?>';charset=utf8;base64, <?php echo base64_encode($socio["photo"]); ?>" alt="member-photo"></td>
+        <td><?php echo $socio["orden_number"]; ?></td>
+        <td><?php echo $socio["socio_number"]; ?></td>
+        <td><?php echo $socio["name"]; ?></td>
+        <td><?php echo $socio["postal_code"]; ?></td>
+        <td><?php echo $socio["ingreso"]; ?></td>
+        <td><?php echo $socio["baja"]; ?></td>
+        <td><?php echo $socio["email"]; ?></td>
+        <td><?php echo $socio["cellphone"]; ?></td>
+        <td><?php echo $socio["DNI"]; ?></td>
+        <td><?php echo $socio["birth"]; ?></td>
+        <td><?php echo $socio["nationality"]; ?></td>
+        <td><?php echo $socio["activity"]; ?></td>
+        <td class="months__span">
+            <span>E</span>
+            <span>E</span>
+            <span>E</span>
+            <span>E</span>
+            <span>E</span>
+            <span style="color: green">E</span>
+            <span>E</span>
+            <span>E</span>
+            <span>E</span>
+            <span>E</span>
+            <span>E</span>
+            <span>E</span>
+        </td>
+    </tr>
 <?php endforeach; ?>

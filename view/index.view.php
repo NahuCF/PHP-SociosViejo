@@ -11,7 +11,7 @@
     <title>Animu</title>
 </head>
 <body>
-    <?php if(isset($_SESSION["user"])): ?>
+    <?php if(isset($_SESSION["admin"])): ?>
         <?php require "user-header.php"; ?>
     <?php else: ?>
         <?php require "header.php"; ?>

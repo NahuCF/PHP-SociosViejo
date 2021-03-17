@@ -14,7 +14,7 @@
         <li class="first__list">
             <a class="user__type" id="user__type" href="#">
                 <i class="far fa-user"></i>
-                <?php echo $_SESSION["user"]; ?>
+                <?php echo $_SESSION["admin"]; ?>
                 <i class="fas fa-caret-down"></i>
             </a>
             <ul class="sub__menu" id="switch">
