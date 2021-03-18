@@ -18,9 +18,9 @@
     <div class="wrap upload">
         <div style="margin-bottom: 20px;" class="top">
             <h1>Nuevo Socio</h1>
-            <?php if(!empty($error_in_debe)): ?>
+            <?php if(!empty($error)): ?>
                 <div class="login_errorbox">
-                    <p style="margin: 0;"><?php echo $error_in_debe; ?></p>
+                    <p style="margin: 0;"><?php echo $error; ?></p>
                 </div>
             <?php endif; ?>
         </div>

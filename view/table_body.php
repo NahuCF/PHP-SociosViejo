@@ -12,7 +12,13 @@
         </td>
         <td><?php echo $socio["orden_number"]; ?></td>
         <td><?php echo $socio["socio_number"]; ?></td>
-        <td><a href="<?php echo "single.php?s=" . $socio["ID"]; ?>"><?php echo $socio["name"]; ?></a></td>
+        <td>
+            <?php if(isset($_SESSION["admin"])): ?>
+                <a href="<?php echo "single.php?s=" . $socio["ID"]; ?>"><?php echo $socio["name"]; ?></a>
+            <?php else: ?>
+                <?php echo $socio["name"]; ?>
+            <?php endif; ?>
+        </td>
         <td><?php echo $socio["postal_code"]; ?></td>
         <td><?php echo $socio["ingreso"]; ?></td>
         <td><?php echo $socio["baja"]; ?></td>

@@ -18,9 +18,9 @@
     <div class="wrap upload">
         <div style="margin-bottom: 20px;" class="top">
             <h1><?php echo "Socio " . $socio["name"]; ?></h1>
-            <?php if(!empty($error_in_debe)): ?>
+            <?php if(!empty($error)): ?>
                 <div class="login_errorbox">
-                    <p style="margin: 0;"><?php echo $error_in_debe; ?></p>
+                    <p style="margin: 0;"><?php echo $error; ?></p>
                 </div>
             <?php endif; ?>
         </div>
@@ -38,10 +38,6 @@
                 <div class="hide__admin">
                     <input name="torrent_data" id="upload__torrent" type="file" placeholder="Browse...">
                 </div>
-
-                <?php if(!empty($error)): ?>
-                    <div class="error_message"><?php echo $error; ?></div>
-                <?php endif; ?>
             </div>
             
             <div class="upload__form optional">

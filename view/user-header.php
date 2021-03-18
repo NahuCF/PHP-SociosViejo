@@ -5,7 +5,7 @@
         <?php if(isset($_GET["u"])): ?>
             <input name="u" value="<?php echo clean_string($_GET['u']); ?>" style="pointer-events: none; display: none" type="text">
         <?php endif; ?>
-        <input class="input_search" name="w" type="text" placeholder="<?php echo isset($_GET["u"]) ? "Search " . clean_string($_GET["u"]) . "'" . " torrents" : "Search..." ?>">
+        <input class="input_search" name="w" type="text" placeholder="<?php echo isset($_GET["u"]) ? "Nombre de Socio " . clean_string($_GET["u"]) . "'" . " torrents" : "Nombre de Socio" ?>">
         <div class="button__headercontenedor" >
             <button class="header__submitbtn" type="submit"><i class="fa fa-search fa-fw"></i></button>
         </div>
