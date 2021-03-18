@@ -16,8 +16,13 @@
     <?php require "user-header.php"; ?>
 
     <div class="wrap upload">
-        <div class="top">
+        <div style="margin-bottom: 20px;" class="top">
             <h1>Nuevo Socio</h1>
+            <?php if(!empty($error_in_debe)): ?>
+                <div class="login_errorbox">
+                    <p style="margin: 0;"><?php echo $error_in_debe; ?></p>
+                </div>
+            <?php endif; ?>
         </div>
 
         <form class="upload__form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST" enctype="multipart/form-data">
@@ -33,10 +38,6 @@
                 <div class="hide__admin">
                     <input name="torrent_data" id="upload__torrent" type="file" placeholder="Browse...">
                 </div>
-
-                <?php if(!empty($error)): ?>
-                    <div class="error_message"><?php echo $error; ?></div>
-                <?php endif; ?>
             </div>
             
             <div class="upload__form optional">
@@ -49,6 +50,12 @@
 
                     <label for="ingreso">Ingreso</label>
                     <div>
+                        <select name="ingreso_year" id="">
+                            <option value="" selected>Año</option>
+                            <?php for($i = 0; $i <= 70; $i++):?>
+                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                            <?php endfor; ?>
+                        </select>
                         <select name="ingreso_month" id="">
                             <option value="" selected>Mes</option>
                             <?php for($i = 1; $i <= 12; $i++):?>
@@ -61,12 +68,6 @@
                                 <option value="<?php echo $i?>"><?php echo $i?></option>
                             <?php endfor; ?>
                         </select> 
-                        <select name="ingreso_year" id="">
-                            <option value="" selected>Año</option>
-                            <?php for($i = 0; $i <= 70; $i++):?>
-                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
-                            <?php endfor; ?>
-                        </select>
                     </div>
                     
                     <label for="Mail">Mail</label>
@@ -88,6 +89,12 @@
 
                     <label for="baja">Baja</label>
                     <div>
+                        <select name="baja_year" id="">
+                            <option value="" selected>Año</option>
+                            <?php for($i = 0; $i <= 70; $i++):?>
+                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                            <?php endfor; ?>
+                        </select>
                         <select name="baja_month" id="">
                             <option value="" selected>Mes</option>
                             <?php for($i = 1; $i <= 12; $i++):?>
@@ -100,12 +107,6 @@
                                 <option value="<?php echo $i?>"><?php echo $i?></option>
                             <?php endfor; ?>
                         </select> 
-                        <select name="baja_year" id="">
-                            <option value="" selected>Año</option>
-                            <?php for($i = 0; $i <= 70; $i++):?>
-                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
-                            <?php endfor; ?>
-                        </select>
                     </div>
 
                     <label for="cellphone">Telefono</label>
@@ -113,6 +114,12 @@
 
                     <label for="birth">Fecha de Nacimiento</label>
                     <div>
+                        <select name="birth_year" id="">
+                            <option value="" selected>Año</option>
+                            <?php for($i = 0; $i <= 70; $i++):?>
+                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                            <?php endfor; ?>
+                        </select>
                         <select name="birth_month" id="">
                             <option value="" selected>Mes</option>
                             <?php for($i = 1; $i <= 12; $i++):?>
@@ -124,12 +131,6 @@
                             <?php for($i = 1; $i <= 30; $i++):?>
                                 <option value="<?php echo $i?>"><?php echo $i?></option>
                             <?php endfor; ?>
-                        </select> 
-                        <select name="birth_year" id="">
-                            <option value="" selected>Año</option>
-                            <?php for($i = 0; $i <= 70; $i++):?>
-                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
-                            <?php endfor; ?>
                         </select>
                     </div>
 
@@ -138,17 +139,31 @@
                 </div>
             </div>
             
+            <div>
+                <?php for($i = 0; $i < 12; $i++): ?>
+                    <label for="<?php echo $months[$i]; ?>"><?php echo $months[$i]; ?></label>
+                    <input type="checkbox" id="<?php echo $months[$i]; ?>" value="<?php echo $months[$i]; ?>" name="<?php echo $months[$i]; ?>">
+                <?php endfor; ?>
+                <br>
+                <?php for($i = 0; $i < 12; $i++): ?>
+                    <label for="<?php echo $months[$i] . "Debe"; ?>"><?php echo $months[$i]; ?></label>
+                    <input type="checkbox" id="<?php echo $months[$i] . "Debe"; ?>" value="<?php echo $months[$i] . "Debe"; ?>" name="<?php echo $months[$i] . "Debe"; ?>">
+                <?php endfor; ?>
+            </div>                   
+            
             <?php if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["g-recaptcha-response"])): ?>
                 <?php echo "The response parameter is missing." ?>
             <?php endif; ?>
             <div class="g-recaptcha" data-sitekey="6LcQyHcaAAAAANN1Ve1GUVJJF0b3pfeQQIKCq4a0"></div>
             <br/>
 
-            <button class="registerbtn__submit" type="Submit">Upload</button>
+            <button class="registerbtn__submit" type="Submit">Añadir</button>
         </form>
     </div>
 
     <?php echo '<script type="text/javascript" src="js/upload.js"></script>'; ?>
     <?php echo '<script type="text/javascript" src="js/user_menu.js"></script>'; ?>
+
+    <?php echo '<script type="text/javascript" src="js/add_socio.js"></script>'; ?>
 </body>
 </html>
