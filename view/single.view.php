@@ -10,7 +10,7 @@
     
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    <title>Upload</title>
+    <title>Socios Club</title>
 </head>
 <body>
     <?php require "user-header.php"; ?>
@@ -184,24 +184,40 @@
                 </div>
             </div>
             
-            <div>
-                <?php for($i = 0; $i < 12; $i++): ?>
-                    <label for="<?php echo $months[$i]; ?>"><?php echo $months[$i]; ?></label>
-                    <?php if(unserialize($socio["pagados"])[2021][$months[$i]] == 1): ?>
-                        <input type="checkbox" id="<?php echo $months[$i]; ?>" value="<?php echo $months[$i]; ?>" name="<?php echo $months[$i]; ?>" checked>
-                    <?php else: ?>
-                        <input type="checkbox" id="<?php echo $months[$i]; ?>" value="<?php echo $months[$i]; ?>" name="<?php echo $months[$i]; ?>">
-                    <?php endif; ?>
-                <?php endfor; ?>
+            <div class="months">
+                <div class="months__column">
+                    <h3>Pagó</h3>
+                    <?php for($i = 0; $i < 12; $i++): ?>
+                        <?php if(unserialize($socio["pagados"])[2021][$months[$i]] == 1): ?>
+                            <div class="individual__column">
+                                <label for="<?php echo $months[$i]; ?>"><?php echo $months[$i]; ?></label>
+                                <input type="checkbox" id="<?php echo $months[$i]; ?>" value="<?php echo $months[$i]; ?>" name="<?php echo $months[$i]; ?>" checked>
+                            </div>
+                        <?php else: ?>
+                            <div class="individual__column">
+                                <label for="<?php echo $months[$i]; ?>"><?php echo $months[$i]; ?></label>
+                                <input type="checkbox" id="<?php echo $months[$i]; ?>" value="<?php echo $months[$i]; ?>" name="<?php echo $months[$i]; ?>">
+                            </div>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </div>
                 <br>
-                <?php for($i = 0; $i < 12; $i++): ?>
-                    <label for="<?php echo $months[$i] . "Debe"; ?>"><?php echo $months[$i]; ?></label>
-                    <?php if(unserialize($socio["debidos"])[2021][$months[$i] . "Debe"] == 0): ?>
-                        <input type="checkbox" id="<?php echo $months[$i] . "Debe"; ?>" value="<?php echo $months[$i] . "Debe"; ?>" name="<?php echo $months[$i] . "Debe"; ?>" checked>
-                    <?php else: ?>
-                        <input type="checkbox" id="<?php echo $months[$i] . "Debe"; ?>" value="<?php echo $months[$i] . "Debe"; ?>" name="<?php echo $months[$i] . "Debe"; ?>">
-                    <?php endif; ?>
-                <?php endfor; ?>
+                <div class="months__column">
+                    <h3>Debe</h3>
+                    <?php for($i = 0; $i < 12; $i++): ?>
+                        <?php if(unserialize($socio["debidos"])[2021][$months[$i] . "Debe"] == 0): ?>
+                            <div class="individual__column">
+                                <label for="<?php echo $months[$i] . "Debe"; ?>"><?php echo $months[$i]; ?></label>
+                                <input type="checkbox" id="<?php echo $months[$i] . "Debe"; ?>" value="<?php echo $months[$i] . "Debe"; ?>" name="<?php echo $months[$i] . "Debe"; ?>" checked>
+                            </div>
+                        <?php else: ?>
+                            <div class="individual__column">
+                                <label for="<?php echo $months[$i] . "Debe"; ?>"><?php echo $months[$i]; ?></label>
+                                <input type="checkbox" id="<?php echo $months[$i] . "Debe"; ?>" value="<?php echo $months[$i] . "Debe"; ?>" name="<?php echo $months[$i] . "Debe"; ?>">
+                            </div>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </div>
             </div>                   
 
             <button class="registerbtn__submit" type="Submit">Actualizar</button>
@@ -211,6 +227,6 @@
     <?php echo '<script type="text/javascript" src="js/upload.js"></script>'; ?>
     <?php echo '<script type="text/javascript" src="js/user_menu.js"></script>'; ?>
 
-    <?php echo '<script type="text/javascript" src="js/add_socio.js"></script>'; ?>
+    <?php echo '<script type="text/javascript" src="js/filters_nav_header.js"></script>'; ?>
 </body>
 </html>

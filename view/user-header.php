@@ -1,6 +1,6 @@
 <header>
-    <a href="index.php">asd</a>
-    <a href="upload.php">UPLOAD</a>
+    <a style="margin-right: 20px" href="index.php">INICIO</a>
+    <a style="margin-right: 20px" href="upload.php">AÑADIR SOCIO</a>
     <form action="search.php" method="GET">
         <select name="socio_filterBy" id="socio_filterBy">
             <option value="name" selected>Socio</option>
@@ -37,12 +37,6 @@
                 <i class="fas fa-caret-down"></i>
             </a>
             <ul class="sub__menu" id="switch">
-                <li>
-                    <a href="profile.php">
-                        <i class="fas fa-cog"></i>
-                        Profile
-                    </a>
-                </li>
                 <li>
                     <a href="logout.php">
                         <i class="fa fa-times fa-fw"></i>

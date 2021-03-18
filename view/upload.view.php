@@ -10,7 +10,7 @@
     
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    <title>Upload</title>
+    <title>Socios Club</title>
 </head>
 <body>
     <?php require "user-header.php"; ?>
@@ -155,16 +155,26 @@
                 </div>
             </div>
             
-            <div>
-                <?php for($i = 0; $i < 12; $i++): ?>
-                    <label for="<?php echo $months[$i]; ?>"><?php echo $months[$i]; ?></label>
-                    <input type="checkbox" id="<?php echo $months[$i]; ?>" value="<?php echo $months[$i]; ?>" name="<?php echo $months[$i]; ?>">
-                <?php endfor; ?>
+            <div class="months">
+                <div class="months__column">
+                    <h3>Pagó</h3>
+                    <?php for($i = 0; $i < 12; $i++): ?>
+                        <div class="individual__column">
+                            <label for="<?php echo $months[$i]; ?>"><?php echo $months[$i]; ?></label>
+                            <input type="checkbox" id="<?php echo $months[$i]; ?>" value="<?php echo $months[$i]; ?>" name="<?php echo $months[$i]; ?>">
+                        </div>
+                    <?php endfor; ?>
+                </div>
                 <br>
-                <?php for($i = 0; $i < 12; $i++): ?>
-                    <label for="<?php echo $months[$i] . "Debe"; ?>"><?php echo $months[$i]; ?></label>
-                    <input type="checkbox" id="<?php echo $months[$i] . "Debe"; ?>" value="<?php echo $months[$i] . "Debe"; ?>" name="<?php echo $months[$i] . "Debe"; ?>">
-                <?php endfor; ?>
+                <div class="months__column">
+                    <h3>Debe</h3>
+                    <?php for($i = 0; $i < 12; $i++): ?>
+                        <div class="individual__column">
+                            <label for="<?php echo $months[$i] . "Debe"; ?>"><?php echo $months[$i]; ?></label>
+                            <input type="checkbox" id="<?php echo $months[$i] . "Debe"; ?>" value="<?php echo $months[$i] . "Debe"; ?>" name="<?php echo $months[$i] . "Debe"; ?>">
+                        </div>
+                    <?php endfor; ?>
+                </div>
             </div>                   
 
             <button class="registerbtn__submit" type="Submit">Añadir</button>

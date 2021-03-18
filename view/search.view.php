@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/index.css">
 
-    <title>Animu</title>
+    <title>Socios Club</title>
 </head>
 <body>
     <?php if(isset($_SESSION["admin"])): ?>
@@ -23,8 +23,13 @@
         </div>
     <?php else: ?>
         <div class="wraper">
-            <?php if(isset($_GET["u"])): ?>
-                <h3><?php echo "Browsing " . clean_string($_GET["u"]) . "' torrents (" . sizeof($torrents) . ")"; ?></h3>
+            <?php if(isset($_GET["socio_filterBy"]) && $_GET["socio_filterBy"] == "activity"): ?>
+                <?php 
+                    $statement = $conection->prepare("SELECT * FROM socios WHERE activity = :activity");
+                    $statement->execute(array("activity" => clean_string($_GET["activity_type"])));
+                    $result = $statement->fetchAll();
+                ?>
+                <h3><?php echo sizeof($result) > 1 || sizeof($result) == 0 ? "(" . sizeof($result) . ")" . " socios en " . clean_string($_GET["activity_type"]) : sizeof($socios) . " socio en " . clean_string($_GET["activity_type"]) ?></h3>
             <?php endif; ?>
             <table>
                 <thead>
