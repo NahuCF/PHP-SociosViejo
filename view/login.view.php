@@ -11,8 +11,6 @@
     <title>Login</title>
 </head>
 <body>
-    <?php require "header.php"; ?>
-    
     <div class="wrap">
         <?php if(!empty($error)): ?>
             <div class="login_errorbox">

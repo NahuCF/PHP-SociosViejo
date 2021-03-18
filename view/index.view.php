@@ -32,5 +32,6 @@
     </div>
     
     <?php echo '<script type="text/javascript" src="js/user_menu.js"></script>'; ?>
+    <?php echo '<script type="text/javascript" src="js/filters_nav_header.js"></script>'; ?>
 </body>
 </html>

@@ -27,7 +27,7 @@
 
         <form class="upload__form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <label for="upload__torrent">Torrent File</label>
+                <label for="upload__torrent">Socio Foto</label>
                 <div class="browse_contenedor">
                     <label class="btn__browse" id="btn__browse" for="upload__torrent">
                         <span>Foto</span>
@@ -135,7 +135,23 @@
                     </div>
 
                     <label for="activity">Actividad</label>
-                    <input id="activity" name="activity" type="text" placeholder="Actividad">
+                    <select name="activity" id="activity">
+                        <option value="Sin actividad" selected>Sin actividad</option>
+                        <option value="Futbol">Futbol</option>
+                        <option value="Fefi tirauno">Fefi tirauno</option>
+                        <option value="Fefi tirados">Fefi tirados</option>
+                        <option value="Futsal">Futsal</option>
+                        <option value="Futbol Femenino">Futbol Femenino</option>
+                        <option value="Futbol Lifat">Futbol Lifat</option>
+                        <option value="Gimnasio">Gimnasio</option>
+                        <option value="Patin Artistico">Patin Artistico</option>
+                        <option value="Folclore">Folclore</option>
+                        <option value="Gimnasia Funcional">Gimnasia Funcional</option>
+                        <option value="Taekondo">Taekondo</option>
+                        <option value="Kick Boxing">Kick Boxing</option>
+                        <option value="Canto">Canto</option>
+                        <option value="Vitalicios">Vitalicios</option>
+                    </select>
                 </div>
             </div>
             
@@ -150,12 +166,6 @@
                     <input type="checkbox" id="<?php echo $months[$i] . "Debe"; ?>" value="<?php echo $months[$i] . "Debe"; ?>" name="<?php echo $months[$i] . "Debe"; ?>">
                 <?php endfor; ?>
             </div>                   
-            
-            <?php if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["g-recaptcha-response"])): ?>
-                <?php echo "The response parameter is missing." ?>
-            <?php endif; ?>
-            <div class="g-recaptcha" data-sitekey="6LcQyHcaAAAAANN1Ve1GUVJJF0b3pfeQQIKCq4a0"></div>
-            <br/>
 
             <button class="registerbtn__submit" type="Submit">Añadir</button>
         </form>
@@ -163,7 +173,6 @@
 
     <?php echo '<script type="text/javascript" src="js/upload.js"></script>'; ?>
     <?php echo '<script type="text/javascript" src="js/user_menu.js"></script>'; ?>
-
-    <?php echo '<script type="text/javascript" src="js/add_socio.js"></script>'; ?>
+    <?php echo '<script type="text/javascript" src="js/filters_nav_header.js"></script>'; ?>
 </body>
 </html>

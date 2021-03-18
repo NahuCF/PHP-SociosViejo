@@ -11,7 +11,7 @@
     <title>Animu</title>
 </head>
 <body>
-    <?php if(isset($_SESSION["user"])): ?>
+    <?php if(isset($_SESSION["admin"])): ?>
         <?php require "user-header.php"; ?>
     <?php else: ?>
         <?php require "header.php"; ?>
@@ -41,5 +41,6 @@
     <?php endif; ?>
 
     <?php echo '<script type="text/javascript" src="js/user_menu.js"></script>'; ?>
+    <?php echo '<script type="text/javascript" src="js/filters_nav_header.js"></script>'; ?>
 </body>
 </html>

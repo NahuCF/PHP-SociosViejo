@@ -27,7 +27,7 @@
 
         <form class="upload__form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <label for="upload__torrent">Torrent File</label>
+                <label for="upload__torrent">Socio Foto</label>
                 <div class="browse_contenedor">
                     <label class="btn__browse" id="btn__browse" for="upload__torrent">
                         <span>Foto</span>
@@ -170,8 +170,17 @@
                         </select>
                     </div>
 
+                    <?php $activities = array("Sin actividad", "Futbol", "Fefi tirauno", "Fefi tirados", "Futsal", "Futbol Femenino", "Futbol Lifat", "Gimnasio", "Patin Artistico", "Folclore", "Gimnasia Funcional", "Taekondo", "Kick Boxing", "Canto", "Vitalicios"); ?>               
                     <label for="activity">Actividad</label>
-                    <input id="activity" value="<?php echo $socio["activity"]; ?>" name="activity" type="text" placeholder="Actividad">
+                    <select name="activity" id="activity">
+                        <?php foreach($activities as $activitie): ?>
+                            <?php if($activitie == $socio["activity"]): ?>
+                                <option value="<?php echo $activitie; ?>" selected><?php echo $activitie; ?></option>
+                            <?php else: ?>
+                                <option value="<?php echo $activitie; ?>"><?php echo $activitie; ?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
             </div>
             
@@ -194,12 +203,6 @@
                     <?php endif; ?>
                 <?php endfor; ?>
             </div>                   
-            
-            <?php if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["g-recaptcha-response"])): ?>
-                <?php echo "The response parameter is missing." ?>
-            <?php endif; ?>
-            <div class="g-recaptcha" data-sitekey="6LcQyHcaAAAAANN1Ve1GUVJJF0b3pfeQQIKCq4a0"></div>
-            <br/>
 
             <button class="registerbtn__submit" type="Submit">Actualizar</button>
         </form>
