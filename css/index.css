@@ -103,7 +103,6 @@ header {
 }
 
 .wraper {
-    max-width: 800px;
     
     margin: auto;
     padding: 0px 16px 40px;
@@ -471,6 +470,50 @@ input::placeholder {
     box-sizing: border-box;
 }
 
+.months {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.months label, .months input {
+    margin: 0;
+    height: unset;
+}
+
+.months__column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.individual__column {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    height: 30px;
+}
+
+.individual__column label {
+    height: 100%;
+    width: 100px;
+
+    font-weight: 500;
+
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    background-color: #F5F5F5;
+
+    border: 1px solid #ddd;
+    border-radius: 4px 0px 0px 4px;
+}
+
+input[type=checkbox]
+{
+    width: 30px;
+    height: 30px;
+}
+
 /* SEARCH.PHP */
 
 .search__h1 {
@@ -726,86 +769,6 @@ input::placeholder {
     }
 }
 
-/* PROFILE */
-
-.profile {
-    padding-bottom: 20px;
-}
-
-.profile h2 {
-    font-weight: 500;
-}
-
-.profile h2, .profile h2 strong {
-    padding: 20px 0px;
-    font-size: 30px;
-}
-.profile-container {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.profile-rows__container {
-    display: flex;
-    align-items:  center;
-    margin-bottom: 20px;
-}
-
-.profile-row {
-    display: flex;
-    margin-left: 50px;
-}
-
-.profile-row div:first-child {
-    width: 180px;
-    font-weight: bold;
-}
-
-.avatar {
-    max-width: 120px;
-    margin-bottom: 20px;
-}
-
-.profile__tabs {
-    display: flex;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-}
-
-.profile__tabs div {
-    margin-right: 3px;
-    margin-bottom: -1px;
-
-    display: flex;
-    align-items: center;
-    height: 42px;
-
-    border-radius: 4px 4px 0px 0px;
-}
-
-.profile__tabs .active {
-    border: 1px solid #ddd;
-    border-bottom-color: transparent;
-    background-color: white;
-    pointer-events: none;
-}
-
-.active a {
-    color: black;
-}
-
-.profile__tabs div:hover {
-    background-color: #EEEEEE;
-}
-
-.profile__tabs div a {
-    padding: 10px 15px;
-}
-
-.profile__form-email {
-    display: none;
-}
-
 @media (max-width: 760px) {
     .colaps {
         white-space: pre-wrap;
@@ -861,4 +824,21 @@ input::placeholder {
         transform: scale(0.87);
         transform-origin: 0 0;
     }   
+}
+
+
+.img-member__head {
+    width: 130px;
+}
+
+td {
+    text-align: center;
+}
+
+.img-member {
+    width: 120px;
+}
+
+.months__span span {
+    font-size: 20px;
 }

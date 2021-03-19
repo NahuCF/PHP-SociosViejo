@@ -28,6 +28,7 @@ function clean_string($word)
 }
 
 // This function will only be uses in pagination.php // 
+
 function number_of_pages($torrents_per_page, $conection)
 {
     $total_torrents = $conection->prepare("SELECT FOUND_ROWS() as total");
@@ -39,46 +40,12 @@ function number_of_pages($torrents_per_page, $conection)
     return $number_of_pages;
 }
 
-function torrents_byColumn_index($torrents_per_page, $conection, $order, $column)
+function members_byColumn($torrents_per_page, $conection, $column)
 {
     $begin = get_page() > 1 ? get_page() * $torrents_per_page - $torrents_per_page : 0;
 
-    $statement = $conection->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM torrents ORDER BY $column $order LIMIT $begin, $torrents_per_page");
+    $statement = $conection->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM socios ORDER BY $column DESC LIMIT $begin, $torrents_per_page");
     $statement->execute();
-
-    return $torrents = $statement->fetchAll();
-}
-
-function torrents_byColumn_search($torrents_per_page, $conection, $word, $order, $column)
-{
-    $begin = get_page() > 1 ? get_page() * $torrents_per_page - $torrents_per_page : 0;
-    $statement = $conection->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM torrents WHERE name LIKE :word ORDER BY $column $order LIMIT $begin, $torrents_per_page");
-    $statement->execute(array("word" => "%$word%"));
-
-    return $torrents = $statement->fetchAll();
-}
-
-// Function to get the torrents of a especific user
-function user_torrents_search($torrents_per_page, $conection, $word, $column, $order, $user_name)
-{
-    $begin = get_page() > 1 ? get_page() * $torrents_per_page - $torrents_per_page : 0;
-
-    $statement = $conection->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM torrents WHERE name LIKE :word and torrentOwnerName = :user_name ORDER BY $column $order LIMIT $begin, $torrents_per_page");
-    $statement->execute(
-        array(
-            "word" => "%$word%",
-            "user_name" => $user_name
-        )
-    );
-
-    return $torrents = $statement->fetchAll();
-}
-
-function torrents_byColumn_torrents($torrents_per_page, $conection, $column, $order, $user_name)
-{
-    $begin = get_page() > 1 ? get_page() * $torrents_per_page - $torrents_per_page : 0;
-    $statement = $conection->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM torrents WHERE torrentOwnerName = :user_name ORDER BY $column $order LIMIT $begin, $torrents_per_page");
-    $statement->execute(array("user_name" => $user_name));
 
     return $torrents = $statement->fetchAll();
 }

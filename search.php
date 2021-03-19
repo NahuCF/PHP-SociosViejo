@@ -3,6 +3,11 @@
 require "admin/config.php";
 require "functions.php";
 
+if(!isset($_SESSION["visitor"]) && !isset($_SESSION["admin"]))
+{
+    header("Location: login.php");
+}
+
 $conection = conection_to_database($db_config);
 if(!$conection)
 {
@@ -11,83 +16,24 @@ if(!$conection)
 
 $error = "";
 
-if(isset($_GET["u"]) && isset($_GET["w"])) // Using a word to find torrent of a user
+if(isset($_GET["socio_filterBy"]) && $_GET["socio_filterBy"] == "name" && !empty($_GET["name"]))
 {
-    $user_name = clean_string($_GET["u"]);
-    $word = clean_string($_GET["w"]);
 
-    if(isset($_GET["c"]) && isset($_GET["o"]))
-    {
-        if($_GET["c"] == "size" && $_GET["o"] == "desc")
-        {
-            $torrents = user_torrents_search($page_config["torrents_per_page"], $conection, $word, "size", "DESC", $user_name);
-        }
-        elseif($_GET["c"] == "size" && $_GET["o"] == "asc")
-        {
-            $torrents = user_torrents_search($page_config["torrents_per_page"], $conection, $word, "size", "ASC", $user_name);
-        }
-        elseif($_GET["c"] == "date" && $_GET["o"] == "desc")
-        {
-            $torrents = user_torrents_search($page_config["torrents_per_page"], $conection, $word, "date", "DESC", $user_name);
-        }
-        elseif($_GET["c"] == "date" && $_GET["o"] == "asc")
-        {
-            $torrents = user_torrents_search($page_config["torrents_per_page"], $conection, $word, "date", "ASC", $user_name);
-        }
-        elseif($_GET["c"] == "likes" && $_GET["o"] == "desc")
-        {
-            $torrents = user_torrents_search($page_config["torrents_per_page"], $conection, $word, "likes", "DESC", $user_name);
-        }
-        elseif($_GET["c"] == "likes" && $_GET["o"] == "asc")
-        {
-            $torrents = user_torrents_search($page_config["torrents_per_page"], $conection, $word, "likes", "ASC", $user_name);
-        }
-    }
-    else
-    {
-        $torrents = user_torrents_search($page_config["torrents_per_page"], $conection, $word, "date", "DESC", $user_name);
-    }
+    $name = clean_string($_GET["name"]);
+    
+    $begin = get_page() > 1 ? get_page() * $page_config["torrents_per_page"] - $page_config["torrents_per_page"] : 0;
+    $torrents_per_page = $page_config["torrents_per_page"];
+    $statement = $conection->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM socios WHERE name LIKE :name LIMIT $begin, $torrents_per_page");
+    $statement->execute(array("name" => "%$name%" ));
+    $socios = $statement->fetchAll();
 }
-else if(isset($_GET["w"])) // Search without u
+else if(isset($_GET["socio_filterBy"]) && $_GET["socio_filterBy"] == "activity")
 {
-    $word = clean_string($_GET["w"]);
-
-    if(isset($_GET["c"]) && isset($_GET["o"]))
-    {
-        if($_GET["c"] == "size" && $_GET["o"] == "desc")
-        {
-            $torrents = torrents_byColumn_search($page_config["torrents_per_page"], $conection, $word, "DESC", "size");
-        }
-        elseif($_GET["c"] == "size" && $_GET["o"] == "asc")
-        {
-            $torrents = torrents_byColumn_search($page_config["torrents_per_page"], $conection, $word, "ASC", "size");
-        }
-        elseif($_GET["c"] == "date" && $_GET["o"] == "desc")
-        {
-            $torrents = torrents_byColumn_search($page_config["torrents_per_page"], $conection, $word, "DESC", "date");
-        }
-        elseif($_GET["c"] == "date" && $_GET["o"] == "asc")
-        {
-            $torrents = torrents_byColumn_search($page_config["torrents_per_page"], $conection, $word, "ASC", "date");
-        }
-        elseif($_GET["c"] == "likes" && $_GET["o"] == "desc")
-        {
-            $torrents = torrents_byColumn_search($page_config["torrents_per_page"], $conection, $word, "DESC","likes");
-        }
-        elseif($_GET["c"] == "likes" && $_GET["o"] == "asc")
-        {
-            $torrents = torrents_byColumn_search($page_config["torrents_per_page"], $conection, $word, "ASC", "likes");
-        }
-    }
-    else
-    {
-        $torrents = torrents_byColumn_search($page_config["torrents_per_page"], $conection, $word, "DESC", "date");
-    }
-
-    if(empty($torrents))
-    {
-        $error = "No results found";
-    }
+    $begin = get_page() > 1 ? get_page() * $page_config["torrents_per_page"] - $page_config["torrents_per_page"] : 0;
+    $torrents_per_page = $page_config["torrents_per_page"];
+    $statement = $conection->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM socios WHERE activity = :activity LIMIT $begin, $torrents_per_page");
+    $statement->execute(array("activity" => clean_string($_GET["activity_type"])));
+    $socios = $statement->fetchAll();
 }
 else
 {
