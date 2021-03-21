@@ -52,8 +52,8 @@
                     <div>
                         <select name="ingreso_year" id="">
                             <option value="" selected>Año</option>
-                            <?php for($i = 0; $i <= 70; $i++):?>
-                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                            <?php for($i = 0; $i <= 160; $i++):?>
+                                <option value="<?php echo 1890 + $i?>"><?php echo 1890 + $i?></option>
                             <?php endfor; ?>
                         </select>
                         <select name="ingreso_month" id="">
@@ -64,7 +64,7 @@
                         </select>
                         <select name="ingreso_day" id="">
                             <option value="" selected>Dia</option>
-                            <?php for($i = 1; $i <= 30; $i++):?>
+                            <?php for($i = 1; $i <= 31; $i++):?>
                                 <option value="<?php echo $i?>"><?php echo $i?></option>
                             <?php endfor; ?>
                         </select> 
@@ -91,8 +91,8 @@
                     <div>
                         <select name="baja_year" id="">
                             <option value="" selected>Año</option>
-                            <?php for($i = 0; $i <= 70; $i++):?>
-                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                            <?php for($i = 0; $i <= 160; $i++):?>
+                                <option value="<?php echo 1890 + $i?>"><?php echo 1890 + $i?></option>
                             <?php endfor; ?>
                         </select>
                         <select name="baja_month" id="">
@@ -103,7 +103,7 @@
                         </select>
                         <select name="baja_day" id="">
                             <option value="" selected>Dia</option>
-                            <?php for($i = 1; $i <= 30; $i++):?>
+                            <?php for($i = 1; $i <= 31; $i++):?>
                                 <option value="<?php echo $i?>"><?php echo $i?></option>
                             <?php endfor; ?>
                         </select> 
@@ -116,8 +116,8 @@
                     <div>
                         <select name="birth_year" id="">
                             <option value="" selected>Año</option>
-                            <?php for($i = 0; $i <= 70; $i++):?>
-                                <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                            <?php for($i = 0; $i <= 160; $i++):?>
+                                <option value="<?php echo 1890 + $i?>"><?php echo 1890 + $i?></option>
                             <?php endfor; ?>
                         </select>
                         <select name="birth_month" id="">
@@ -128,7 +128,7 @@
                         </select>
                         <select name="birth_day" id="">
                             <option value="" selected>Dia</option>
-                            <?php for($i = 1; $i <= 30; $i++):?>
+                            <?php for($i = 1; $i <= 31; $i++):?>
                                 <option value="<?php echo $i?>"><?php echo $i?></option>
                             <?php endfor; ?>
                         </select>

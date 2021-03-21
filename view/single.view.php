@@ -52,11 +52,11 @@
                     <div>
                         <select name="ingreso_year" id="">
                             <option value="" selected>Año</option>
-                            <?php for($i = 0; $i <= 70; $i++):?>
-                                <?php if(1980 + $i == date("o", strtotime($socio["ingreso"]))): ?>
-                                    <option value="<?php echo 1980 + $i?>" selected><?php echo 1980 + $i?></option>
+                            <?php for($i = 0; $i <= 160; $i++):?>
+                                <?php if(1890 + $i == date("o", strtotime($socio["ingreso"]))): ?>
+                                    <option value="<?php echo 1890 + $i?>" selected><?php echo 1890 + $i?></option>
                                 <?php else: ?>
-                                    <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                                    <option value="<?php echo 1890 + $i?>"><?php echo 1890 + $i?></option>
                                 <?php endif; ?>
                             <?php endfor; ?>
                         </select>
@@ -72,7 +72,7 @@
                         </select>
                         <select name="ingreso_day" id="">
                             <option value="" selected>Dia</option>
-                            <?php for($i = 1; $i <= 30; $i++):?>
+                            <?php for($i = 1; $i <= 31; $i++):?>
                                 <?php if($i == date("d", strtotime($socio["ingreso"]))): ?>
                                     <option value="<?php echo $i?>" selected><?php echo $i?></option>
                                 <?php else: ?>
@@ -103,11 +103,11 @@
                     <div>
                         <select name="baja_year" id="">
                             <option value="" selected>Año</option>
-                            <?php for($i = 0; $i <= 70; $i++):?>
-                                <?php if(1980 + $i == date("o", strtotime($socio["baja"]))): ?>
-                                    <option value="<?php echo 1980 + $i?>" selected><?php echo 1980 + $i?></option>
+                            <?php for($i = 0; $i <= 160; $i++):?>
+                                <?php if(1890 + $i == date("o", strtotime($socio["baja"]))): ?>
+                                    <option value="<?php echo 1890 + $i?>" selected><?php echo 1890 + $i?></option>
                                 <?php else: ?>
-                                    <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                                    <option value="<?php echo 1890 + $i?>"><?php echo 1890 + $i?></option>
                                 <?php endif; ?>
                             <?php endfor; ?>
                         </select>
@@ -123,7 +123,7 @@
                         </select>
                         <select name="baja_day" id="">
                             <option value="" selected>Dia</option>
-                            <?php for($i = 1; $i <= 30; $i++):?>
+                            <?php for($i = 1; $i <= 31; $i++):?>
                                 <?php if($i == date("d", strtotime($socio["baja"]))): ?>
                                     <option value="<?php echo $i?>" selected><?php echo $i?></option>
                                 <?php else: ?>
@@ -140,11 +140,11 @@
                     <div>
                         <select name="birth_year" id="">
                             <option value="" selected>Año</option>
-                            <?php for($i = 0; $i <= 70; $i++):?>
-                                <?php if(1980 + $i == date("o", strtotime($socio["birth"]))): ?>
-                                    <option value="<?php echo 1980 + $i?>" selected><?php echo 1980 + $i?></option>
+                            <?php for($i = 0; $i <= 160; $i++):?>
+                                <?php if(1890 + $i == date("o", strtotime($socio["birth"]))): ?>
+                                    <option value="<?php echo 1890 + $i?>" selected><?php echo 1890 + $i?></option>
                                 <?php else: ?>
-                                    <option value="<?php echo 1980 + $i?>"><?php echo 1980 + $i?></option>
+                                    <option value="<?php echo 1890 + $i?>"><?php echo 1890 + $i?></option>
                                 <?php endif; ?>
                             <?php endfor; ?>
                         </select>
@@ -160,7 +160,7 @@
                         </select>
                         <select name="birth_day" id="">
                             <option value="" selected>Dia</option>
-                            <?php for($i = 1; $i <= 30; $i++):?>
+                            <?php for($i = 1; $i <= 31; $i++):?>
                                 <?php if($i == date("d", strtotime($socio["birth"]))): ?>
                                     <option value="<?php echo $i?>" selected><?php echo $i?></option>
                                 <?php else: ?>

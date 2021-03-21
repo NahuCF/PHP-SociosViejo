@@ -1,7 +1,7 @@
 <header>
     <a style="margin-right: 20px" href="index.php">INICIO</a>
     <a style="margin-right: 20px" href="upload.php">AÑADIR SOCIO</a>
-    <form action="search.php" method="GET">
+    <form action="search.php" id="form-header" method="GET">
         <select name="socio_filterBy" id="socio_filterBy">
             <option value="name" selected>Socio</option>
             <option value="activity">Actividad</option>
